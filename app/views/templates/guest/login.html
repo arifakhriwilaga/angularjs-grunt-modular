@@ -1,0 +1,52 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a ui-sref="auth.root">AngularJS Grunt CMS</a>
+    <!-- <a ui-sref="auth.root"><img src="images/nestudio_cms_logo.png" class="logo">CMS</a> -->
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <form name="form" ng-submit="loginSubmit(form)" ng-validate="form">
+      <div class="form-group has-feedback">
+        <span class="fa fa-envelope-o form-control-feedback"></span>
+        <input type="email" class="form-control input-yellow-black" placeholder="Email" name="email" ng-model="form.values.email" ng-disabled="isDisabled">
+      </div>
+
+      <div class="form-group has-feedback">
+        <span class="fa fa-lock form-control-feedback"></span>
+        <span class="exclamation-capslock fa fa-exclamation-triangle" data-placement="left" data-toggle="tooltip" data-original-title="Caps lock is on" ng-show='isCapsLockOn'></span>
+        <input type="password" class="form-control input-yellow-black" placeholder="Password" name="password" ng-model="form.values.password" id="password" ng-disabled="isDisabled" ng-show-pw>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox" ng-disabled="isDisabled" ng-model="form.values.remember_me"> Remember Me
+            </label>
+          </div>
+        </div>
+
+        <!-- /.col -->
+        <div class="col-xs-6">
+          <button class="btn btn-block btn-primary btn-flat" type="submit" ng-disabled="isDisabled">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <a ui-sref="guest.forgot" class="text-primary" ng-disabled-link="isDisabled">I forgot my password</a>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+<script type="text/javascript">
+  $(function() {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-yellow',
+      radioClass: 'iradio_square-yellow',
+      increaseArea: '10%' // optional
+    });
+  })
+</script>

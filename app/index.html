@@ -1,28 +1,34 @@
 <!doctype html>
-<html ng-app="angularjsGruntApp" ng-controller="MainController">
+<html ng-app="angularjsGruntApp" ng-controller="BaseController">
   <head>
   <base href="/">
     <meta charset="utf-8">
-    <title></title>
+    <title>AngularJS Grunt</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
+    <!-- build-vendor:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/admin-lte/dist/css/AdminLTE.min.css" />
+    <link rel="stylesheet" href="bower_components/Admin-lte/dist/css/skins/skin-blue-light.min.css" />
+    <!-- /bower:css -->
+    <!-- /build-vendor -->
+
+    
+    <!-- build-app:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+    <!-- build-app:css -->
   </head>
-  <body ng-app="angularjsGruntApp">
+  <body class="{{ body.class() }}">
+
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <!-- <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -42,29 +48,29 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ng-href="/login">Contact</a></li>
             </ul>
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="container">
-    <div ng-view=""></div>
+    <!-- <div class="container"> -->
+    <!-- <div ng-view=""></div> -->
       <!-- layout view -->
       <ui-view></ui-view>
       <!-- ./layout view -->
-    </div>
+    <!-- </div> -->
 
-    <div class="footer">
+    <!-- <div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
-    </div>
+    </div> -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+     <!-- <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
@@ -72,9 +78,9 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
-    </script>
+    </script> -->
 
-    <!-- build:js(.) scripts/vendor.js -->
+    <!-- build-vendor:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -86,18 +92,44 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- endbower -->
+    <!-- /bower:js -->
+    <!-- /build-vendor -->
+    
 
-    
-    <!-- endbuild -->
-    
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!-- build-app:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/base-controller.js"></script>
+        
+    <!-- services -->
+    <!-- services:rest -->
+    <!-- <script src="scripts/factories/body_service.js"></script> -->
+    <!-- /services:rest -->
+
+    <!-- services:commons -->
+    <script src="scripts/services/commons/body-service.js"></script>
+    <!-- /services:commons -->
+    <!-- /services -->
+
+    <!-- controllers -->
+    <!-- controllers:guest -->
+    <script src="scripts/controllers/guest-controller.js"></script>
+    <!-- /controllers:guest -->
+
+    <!-- controllers:auth -->
+    <script src="scripts/controllers/auth/students/student-controller.js"></script>
+    <!-- /controllers:auth -->
+    <!-- /controllers -->
+
+    <!-- routes -->
+    <script src="scripts/routes/base-route.js"></script>
+    <!-- routes:guest -->
+    <!-- <script src="scripts/routes/base-route.js"></script> -->
+    <!-- /routes:guest -->
     
-    <!-- auth:js -->
-    <script src="scripts/controllers/auth/students/studentController.js"></script>
-    <!-- auth -->
-        <!-- endbuild -->
-</body>
+    <!-- routes:auth -->
+    <!-- <script src="scripts/routes/base-route.js"></script> -->
+    <!-- /routes:auth -->
+    <!-- /routes -->
+    <!-- /build-app:js -->
+  </body>
 </html>
