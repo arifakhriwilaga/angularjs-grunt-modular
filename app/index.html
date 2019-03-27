@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="angularjsGruntApp" ng-controller="BaseController">
+<html ng-app="angularjsGruntApp" ng-controller="AppController">
   <head>
   <base href="/">
     <meta charset="utf-8">
@@ -8,17 +8,15 @@
     <meta name="viewport" content="width=device-width">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build-vendor:css(.) styles/vendor.css -->
-    <!-- bower:css -->
+    <!-- build-Vendor:css(.) styles/vendor.css -->
+    <!-- Bower -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/admin-lte/dist/css/AdminLTE.min.css" />
     <link rel="stylesheet" href="bower_components/Admin-lte/dist/css/skins/skin-blue-light.min.css" />
-    <!-- /bower:css -->
-    <!-- /build-vendor -->
 
     
     <!-- build-app:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/main.css"> -->
     <!-- build-app:css -->
   </head>
   <body class="{{ body.class() }}">
@@ -55,18 +53,7 @@
       </div>
     </div> -->
 
-    <!-- <div class="container"> -->
-    <!-- <div ng-view=""></div> -->
-      <!-- layout view -->
-      <ui-view></ui-view>
-      <!-- ./layout view -->
-    <!-- </div> -->
-
-    <!-- <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div> -->
+    <ui-view></ui-view>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -80,8 +67,8 @@
        ga('send', 'pageview');
     </script> -->
 
-    <!-- build-vendor:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
+    <!-- Build-Vendor:js(.) bower_components/**/*.js -->
+    <!-- Bower -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -92,44 +79,41 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <!-- /bower:js -->
-    <!-- /build-vendor -->
     
 
-    <!-- build-app:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/base-controller.js"></script>
-        
-    <!-- services -->
-    <!-- services:rest -->
-    <!-- <script src="scripts/factories/body_service.js"></script> -->
-    <!-- /services:rest -->
+    <!-- Build-App:js({.tmp,app}) **/*.js || **/*.*.js -->
+    <script src="app.module.js"></script>
+    <script src="app.controller.js"></script>
 
-    <!-- services:commons -->
-    <script src="scripts/services/commons/body-service.js"></script>
-    <!-- /services:commons -->
-    <!-- /services -->
 
-    <!-- controllers -->
-    <!-- controllers:guest -->
-    <script src="scripts/controllers/guest-controller.js"></script>
-    <!-- /controllers:guest -->
+    <!-- Configs -->
+    <script src="configs/configs.module.js"></script>
 
-    <!-- controllers:auth -->
-    <script src="scripts/controllers/auth/students/student-controller.js"></script>
-    <!-- /controllers:auth -->
-    <!-- /controllers -->
 
-    <!-- routes -->
-    <script src="scripts/routes/base-route.js"></script>
-    <!-- routes:guest -->
-    <!-- <script src="scripts/routes/base-route.js"></script> -->
-    <!-- /routes:guest -->
+    <!-- Router -->
+    <script src="configs/router/router.module.js"></script>
+    <script src="configs/router/router.provider.js"></script>
     
-    <!-- routes:auth -->
-    <!-- <script src="scripts/routes/base-route.js"></script> -->
-    <!-- /routes:auth -->
-    <!-- /routes -->
-    <!-- /build-app:js -->
+
+    <!-- Core -->
+    <script src="core/core.module.js"></script>
+    <!-- Core.Layouts -->
+    <script src="core/layouts/layouts.module.js"></script>
+
+    <!-- Core.Layouts.Body -->
+    <script src="core/layouts/body/body.module.js"></script>
+    <script src="core/layouts/body/body.factory.js"></script>
+
+
+    <!-- Main -->
+    <!-- Main.Guest -->
+    <script src="main/guest/guest.module.js"></script>
+    <script src="main/guest/guest.route.js"></script>
+
+    <!-- Main.Guest.Login -->
+    <script src="main/guest/login/login.module.js"></script>
+    <script src="main/guest/login/login.route.js"></script>
+    <script src="main/guest/login/login.controller.js"></script>
+
   </body>
 </html>
